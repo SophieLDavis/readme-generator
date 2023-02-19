@@ -1,0 +1,20 @@
+// function to generate markdown for README
+// function generateDescription(description) {
+//     return `
+// ## Description
+// ${description}
+// `;
+// }
+
+function generateMarkdown(data) {
+    return `
+    ##Title 
+    ${data.title}
+    ## Description
+    ${data.description}
+    ## License
+    ${data.license}
+`;
+}
+
+module.exports = generateMarkdown;
