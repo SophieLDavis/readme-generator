@@ -35,13 +35,6 @@ const questions = [
         name: 'usage',
         message: 'Provide instructions and examples for use.'
     },
-    // License (multiple choice)
-    {
-        type: 'list',
-        choices: ['MIT', 'ISC', 'GNU', 'Bsd-2-Clause'],
-        name: 'license',
-        message: 'What is your project license type?'
-    },
     // Contributing
     {
         type: 'input',
@@ -72,7 +65,14 @@ const questions = [
         type: 'input',
         name: 'email',
         message: 'Please enter your email address'
-    }
+    },
+        // License (multiple choice)
+        {
+            type: 'list',
+            choices: ['MIT', 'ISC', 'GNU', 'Bsd-2-Clause'],
+            name: 'license',
+            message: 'What is your project license type?'
+        },
 ];
 
 //if (answers.installation==='no') {
@@ -102,23 +102,36 @@ function init() {
     inquirer
         .prompt(questions)
         .then(answers => {
+            license(answers)
             console.log("answers", answers);
             console.log(answers.license)
             const markdown = generateMarkdown(answers);
             writeToFile('README.md', markdown)
             //add badge to license
-                if (answers.license === 'MIT') {
-                    console.log("license clicked")
-                    writeToFile('README.md', `[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)`);
-                } if (answers.license === 'ISC') {
-                    writeToFile('README.md', `[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)`);
-                } if (answers.license === 'GNU') {
-                    writeToFile('README.md', `[![[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)`);
-                } if (answers.license === 'Bsd-2-Clause') {
-                    writeToFile('README.md', `[![License: Bsd-2-Clause]([![License](https://img.shields.io/badge/License-BSD_2--Clause-orange.svg)](https://opensource.org/licenses/BSD-2-Clause)`);
+        if (answers.license === 'MIT') {
+        console.log("license clicked")
+        writeToFile('README.md', `[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)`);
+        } if (answers.license === 'ISC') {
+        writeToFile('README.md', `[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)`);
+        } if (answers.license === 'GNU') {
+        writeToFile('README.md', `[![[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)`);
+        } if (answers.license === 'Bsd-2-Clause') {
+        writeToFile('README.md', `[![License: Bsd-2-Clause]([![License](https://img.shields.io/badge/License-BSD_2--Clause-orange.svg)](https://opensource.org/licenses/BSD-2-Clause)`);
                 
-            }
-        })
+        }
+    })
+}
+
+const license = function (data){
+    if (data.license= "MIT"){ 
+        data.license= data.license + " Mit license info"
+    } if (data.license= "ISC"){ 
+        data.license= data.license + " ISC license info"
+    } if (data.license= "GNU"){ 
+        data.license= data.license + " GNU license info"
+    } if (data.license= "Bsd-2-Clause"){ 
+        data.license= data.license + " Bsd-2-Clause license info"
+    }
 }
 
 // function call to initialize program

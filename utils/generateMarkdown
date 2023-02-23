@@ -13,35 +13,21 @@ const inquirer = require("inquirer");
 // }
 
 function generateMarkdown(data) {
-//     //add badge to license
-// if (data.license === 'MIT') {
-//     console.log("license clicked")
-//     writeToFile('README.md',`[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)`);
-// } if (data.license === 'ISC') {
-//     writeToFile('README.md',`[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)`);
-// } if (data.license === 'GNU') {
-//     writeToFile('README.md',`[![[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)`);
-// } if (data.license === 'Bsd-2-Clause') {
-//     writeToFile('README.md',`[![License: Bsd-2-Clause]([![License](https://img.shields.io/badge/License-BSD_2--Clause-orange.svg)](https://opensource.org/licenses/BSD-2-Clause)`);
-// }
     return `
     ## Table of Contents 
 - [Title](#Title)
 - [Description](#description)
-- [License](#license)
 - [Installation](#installation)
 - [Usage](#usage)
 - [Contributing](#contributing)
 - [Tests](#tests)
+- [License](#license)
 
-    ##Title 
+    ## Title 
     ${data.title}
 
     ## Description
     ${data.description}
-
-    ## License
-    ${data.license}
 
     ## Installation
     ${data.installation}
@@ -58,7 +44,11 @@ function generateMarkdown(data) {
     ## Questions
     Please feel free to contact me by email, ${data.email}, or by visiting my Linked In profile here. ${data.username}
 
+    ## License
+    ${data.license}
 `;
 }
+
+
 
 module.exports = generateMarkdown;
