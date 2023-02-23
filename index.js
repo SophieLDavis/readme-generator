@@ -27,7 +27,7 @@ const questions = [
     {
         type: 'input',
         name: 'installationInput',
-        message: 'You can enter the instructions here.'
+        message: 'You can enter the installation instructions here.'
     },
     // Usage
     {
@@ -66,13 +66,13 @@ const questions = [
         name: 'email',
         message: 'Please enter your email address'
     },
-        // License (multiple choice)
-        {
-            type: 'list',
-            choices: ['MIT', 'ISC', 'GNU', 'Bsd-2-Clause'],
-            name: 'license',
-            message: 'What is your project license type?'
-        },
+    // License (multiple choice)
+    {
+        type: 'list',
+        choices: ['MIT', 'ISC', 'GNU', 'Bsd-2-Clause'],
+        name: 'license',
+        message: 'What is your project license type?'
+    },
 ];
 
 //if (answers.installation==='no') {
@@ -102,42 +102,38 @@ function init() {
     inquirer
         .prompt(questions)
         .then(answers => {
-            license(answers)
+            licenseNotice(answers)
             console.log("answers", answers);
             console.log(answers.license)
             const markdown = generateMarkdown(answers);
             writeToFile('README.md', markdown)
-            //add badge to license
-        if (answers.license === 'MIT') {
-        console.log("license clicked")
+            license(answers)
+        })
+} 
+// const mitData= "license info"
+const license = function (data) {
+    if (data.license ==="MIT") {
         writeToFile('README.md', `[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)`);
-        } if (answers.license === 'ISC') {
+    } if (data.license = "ISC") {
         writeToFile('README.md', `[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)`);
-        } if (answers.license === 'GNU') {
-        writeToFile('README.md', `[![[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)`);
-        } if (answers.license === 'Bsd-2-Clause') {
+    } if (data.license === "GNU") {
+        writeToFile('README.md', `[![[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)`)
+    } if (data.license === "Bsd-2-Clause") {
         writeToFile('README.md', `[![License: Bsd-2-Clause]([![License](https://img.shields.io/badge/License-BSD_2--Clause-orange.svg)](https://opensource.org/licenses/BSD-2-Clause)`);
-                
-        }
-    })
+    }
 }
-
-const license = function (data){
-    if (data.license= "MIT"){ 
-        data.license= data.license + " Mit license info"
-    } if (data.license= "ISC"){ 
-        data.license= data.license + " ISC license info"
-    } if (data.license= "GNU"){ 
-        data.license= data.license + " GNU license info"
-    } if (data.license= "Bsd-2-Clause"){ 
-        data.license= data.license + " Bsd-2-Clause license info"
+const licenseNotice = function (data) {
+    if (data.license === "MIT") {
+        data.license = data.license + " Mit license info"
+        console.log("Hello")
+    } if (data.license === "ISC") {
+        data.license = data.license + " ISC license info"
+    } if (data.license === "GNU") {
+        data.license = data.license + " GNU license info"
+    } if (data.license === "Bsd-2-Clause") {
+        data.license = data.license + " Bsd-2-Clause license info"
     }
 }
 
 // function call to initialize program
 init();
-
-// When a user chooses a license for their application from a list of options 
-//then a badge for that license is added near the top of the README and a notice
-// is added to the section of the README entitled License that explains which license 
-//the application is covered under

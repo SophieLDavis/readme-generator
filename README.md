@@ -1,33 +1,29 @@
-
-    ## Table of Contents 
-- [Title](#Title)
-- [Description](#description)
-- [Installation](#installation)
-- [Usage](#usage)
+[![License: ISC](https://img.shields.io/badge/License-ISC-blue.svg)](https://opensource.org/licenses/ISC)[Usage](#usage)
 - [Contributing](#contributing)
 - [Tests](#tests)
 - [License](#license)
 
     ## Title 
-    p
+    
 
     ## Description
-    d
+    
 
     ## Installation
     yes
 
     ## Usage
-    i
+    
 
     ## Contributing
-    o
+    
 
     ## Tests
     
 
     ## Questions
-    Please feel free to contact me by email, email, or by visiting my Linked In profile here. git
+    Please feel free to contact me by email, sophielouisedavis@live.com, or by visiting my Github profile here: https://github.com/SophieLDavis
+
 
     ## License
-    MITMit license info
+    Bsd-2-Clause Bsd-2-Clause license info

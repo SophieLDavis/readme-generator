@@ -3,18 +3,9 @@ const path = require('path');
 const inquirer = require("inquirer");
 
 
-
-// function to generate markdown for README
-// function generateDescription(description) {
-//     return `
-// ## Description
-// ${description}
-// `;
-// }
-
 function generateMarkdown(data) {
     return `
-    ## Table of Contents 
+## Table of Contents 
 - [Title](#Title)
 - [Description](#description)
 - [Installation](#installation)
@@ -42,7 +33,8 @@ function generateMarkdown(data) {
     ${data.tests}
 
     ## Questions
-    Please feel free to contact me by email, ${data.email}, or by visiting my Linked In profile here. ${data.username}
+    Please feel free to contact me by email, ${data.email}, or by visiting my Github profile here: https://github.com/${data.username}
+
 
     ## License
     ${data.license}
